@@ -51,7 +51,6 @@ class DataParser {
         
         let rows = rawData.components(separatedBy: "\n")
         for i in 1..<rows.count {
-            print(rows[i])
             
             let rowValues = rows[i].replacingOccurrences(of: "\"", with: "").components(separatedBy: ",")
             

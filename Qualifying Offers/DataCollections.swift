@@ -46,7 +46,7 @@ class QualifyingOffer: Comparable, CustomStringConvertible {
 }
 
 // A player connecter to the MLB API
-class Player {
+class Player: Equatable {
     
     // Data components
     var firstName: String
@@ -56,6 +56,7 @@ class Player {
     var mlbCode: Int
     var retrosheetCode: String
     var image: UIImage?
+    var inFocus: Bool = false
     
     init(firstName: String, lastName: String, playerId: Int, davenportCode: String, mlbCode: Int, retrosheetCode: String){
         self.firstName = firstName
@@ -64,6 +65,10 @@ class Player {
         self.davenportCode = davenportCode
         self.mlbCode = mlbCode
         self.retrosheetCode = retrosheetCode
+    }
+    
+    static func ==(lhs: Player, rhs: Player) -> Bool {
+        return lhs.firstName + " " + lhs.lastName == rhs.firstName + " " + rhs.lastName
     }
     
 }

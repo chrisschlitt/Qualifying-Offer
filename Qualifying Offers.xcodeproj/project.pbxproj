@@ -19,6 +19,7 @@
 		49ABD74A1FCE4638008E1F8E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABD7491FCE4638008E1F8E /* DataFetcher.swift */; };
 		49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABD74B1FCE4764008E1F8E /* DataParser.swift */; };
 		49DE9F9F1FCE6171008759DF /* QualifyingOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */; };
+		49DE9FA11FCE8693008759DF /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DE9FA01FCE8693008759DF /* placeholder.png */; };
 		C0C87904616FE7B0089EBC1D /* Pods_Qualifying_Offers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		49ABD7491FCE4638008E1F8E /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		49ABD74B1FCE4764008E1F8E /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualifyingOfferCell.swift; sourceTree = "<group>"; };
+		49DE9FA01FCE8693008759DF /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qualifying_Offers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF996D85FE74AE5D6C942323 /* Pods-Qualifying Offers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				493039031FCE569D006996C3 /* TabViewController.swift */,
 				493039051FCE5795006996C3 /* LoadViewController.swift */,
 				49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */,
+				49DE9FA01FCE8693008759DF /* placeholder.png */,
 			);
 			path = "Qualifying Offers";
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4943E8811FCE458D00BAFA87 /* LaunchScreen.storyboard in Resources */,
+				49DE9FA11FCE8693008759DF /* placeholder.png in Resources */,
 				4943E87E1FCE458D00BAFA87 /* Assets.xcassets in Resources */,
 				4943E8791FCE458D00BAFA87 /* Main.storyboard in Resources */,
 			);

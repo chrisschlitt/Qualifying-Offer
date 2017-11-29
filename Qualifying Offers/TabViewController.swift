@@ -11,6 +11,7 @@ import UIKit
 class TabViewController: UITabBarController {
 
     var offers: [QualifyingOffer] = [QualifyingOffer]()
+    var qualifyingOffer: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()

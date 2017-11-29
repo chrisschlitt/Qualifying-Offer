@@ -21,7 +21,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AFm-1V-BBT"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="AMz-qZ-eaQ"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="AMz-qZ-eaQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4p-ke-uYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mtN-1E-vz3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lPt-4z-Xyg">
                                     <size key="itemSize" width="327" height="75"/>
@@ -52,10 +52,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="327" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-Ii-y5d">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-Ii-y5d">
                                                     <rect key="frame" x="10" y="10" width="45.5" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="JzH-Ii-y5d" secondAttribute="height" multiplier="248:300" id="5oI-KQ-ICP"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="oR2-K6-ktM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jimmy Rollins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fls-Jw-a1k">
@@ -69,6 +70,9 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$38,000,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGv-H7-qyn">
                                                     <rect key="frame" x="70.5" y="45" width="251.5" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="25" id="DEW-DP-Ro3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -77,14 +81,14 @@
                                         </view>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="JzH-Ii-y5d" secondAttribute="bottom" constant="10" id="0gK-ru-qUK"/>
+                                            <constraint firstAttribute="bottom" secondItem="JzH-Ii-y5d" secondAttribute="bottom" priority="999" constant="10" id="0gK-ru-qUK"/>
                                             <constraint firstItem="Fls-Jw-a1k" firstAttribute="top" secondItem="tzO-Q7-cw6" secondAttribute="top" constant="5" id="3Ey-dF-6zz"/>
                                             <constraint firstAttribute="trailing" secondItem="bGv-H7-qyn" secondAttribute="trailing" constant="5" id="5Ny-Jx-hOx"/>
                                             <constraint firstItem="JzH-Ii-y5d" firstAttribute="top" secondItem="tzO-Q7-cw6" secondAttribute="top" constant="10" id="ScD-fx-5bk"/>
                                             <constraint firstItem="JzH-Ii-y5d" firstAttribute="leading" secondItem="tzO-Q7-cw6" secondAttribute="leading" constant="10" id="YhB-Zy-nwR"/>
                                             <constraint firstItem="bGv-H7-qyn" firstAttribute="leading" secondItem="JzH-Ii-y5d" secondAttribute="trailing" constant="15" id="b49-K1-yLt"/>
                                             <constraint firstItem="Fls-Jw-a1k" firstAttribute="leading" secondItem="JzH-Ii-y5d" secondAttribute="trailing" constant="15" id="eeX-SW-Le2"/>
-                                            <constraint firstAttribute="bottom" secondItem="bGv-H7-qyn" secondAttribute="bottom" constant="5" id="lCs-da-gqQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="bGv-H7-qyn" secondAttribute="bottom" priority="999" constant="5" id="lCs-da-gqQ"/>
                                             <constraint firstAttribute="trailing" secondItem="Fls-Jw-a1k" secondAttribute="trailing" constant="5" id="nR3-Hg-LpX"/>
                                             <constraint firstItem="bGv-H7-qyn" firstAttribute="top" secondItem="Fls-Jw-a1k" secondAttribute="bottom" constant="5" id="sbZ-FP-Y4K"/>
                                         </constraints>
@@ -96,12 +100,6 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1.5"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
-                                                <color key="value" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="playerImageView" destination="JzH-Ii-y5d" id="mcR-q2-efd"/>
@@ -111,19 +109,56 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-gB-9bT">
+                                <rect key="frame" x="-1" y="20" width="377" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qualifying Offer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-8C-1dR">
+                                        <rect key="frame" x="0.0" y="46" width="377" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="aT1-iR-gMu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$39,000,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bR-aS-h5F">
+                                        <rect key="frame" x="0.0" y="8" width="377" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="7bR-aS-h5F" firstAttribute="leading" secondItem="iQJ-gB-9bT" secondAttribute="leading" id="0zh-Jx-Sxz"/>
+                                    <constraint firstItem="7bR-aS-h5F" firstAttribute="top" secondItem="iQJ-gB-9bT" secondAttribute="top" constant="8" id="9cg-ei-44J"/>
+                                    <constraint firstAttribute="bottom" secondItem="xSk-8C-1dR" secondAttribute="bottom" constant="8" id="HKg-JI-ldX"/>
+                                    <constraint firstAttribute="trailing" secondItem="7bR-aS-h5F" secondAttribute="trailing" id="HOZ-g1-gBZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="xSk-8C-1dR" secondAttribute="trailing" id="aOP-Fx-wt3"/>
+                                    <constraint firstItem="xSk-8C-1dR" firstAttribute="leading" secondItem="iQJ-gB-9bT" secondAttribute="leading" id="ohj-2b-DWz"/>
+                                    <constraint firstItem="xSk-8C-1dR" firstAttribute="top" secondItem="7bR-aS-h5F" secondAttribute="bottom" constant="8" id="znY-Mx-u8S"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="iQJ-gB-9bT" firstAttribute="leading" secondItem="GgA-Sh-msm" secondAttribute="leading" constant="-1.5" id="PiX-mg-7Bb"/>
                             <constraint firstItem="mtN-1E-vz3" firstAttribute="trailing" secondItem="GgA-Sh-msm" secondAttribute="trailing" id="Seh-E7-DVi"/>
+                            <constraint firstItem="iQJ-gB-9bT" firstAttribute="top" secondItem="GgA-Sh-msm" secondAttribute="top" id="Vae-OE-bwc"/>
                             <constraint firstItem="mtN-1E-vz3" firstAttribute="leading" secondItem="GgA-Sh-msm" secondAttribute="leading" id="jLw-Qs-0QZ"/>
-                            <constraint firstItem="mtN-1E-vz3" firstAttribute="top" secondItem="GgA-Sh-msm" secondAttribute="top" id="kJM-eJ-uea"/>
+                            <constraint firstItem="mtN-1E-vz3" firstAttribute="top" secondItem="iQJ-gB-9bT" secondAttribute="bottom" id="ocn-15-U86"/>
                             <constraint firstItem="GgA-Sh-msm" firstAttribute="bottom" secondItem="mtN-1E-vz3" secondAttribute="bottom" id="tau-k2-Ak4"/>
+                            <constraint firstItem="GgA-Sh-msm" firstAttribute="trailing" secondItem="iQJ-gB-9bT" secondAttribute="trailing" constant="-1.5" id="yLi-dw-Z0Y"/>
+                            <constraint firstItem="mtN-1E-vz3" firstAttribute="top" secondItem="GgA-Sh-msm" secondAttribute="top" constant="75" id="zLW-F8-KFe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GgA-Sh-msm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="XOn-jE-Mg4"/>
+                    <tabBarItem key="tabBarItem" title="Qualifying Offer" id="XOn-jE-Mg4"/>
                     <connections>
                         <outlet property="playerCollectionView" destination="mtN-1E-vz3" id="Zgz-Mh-8iS"/>
+                        <outlet property="qualifyingOfferLabel" destination="xSk-8C-1dR" id="NEz-Yf-emj"/>
+                        <outlet property="qualifyingOfferValueLabel" destination="7bR-aS-h5F" id="3Zg-bz-6MU"/>
+                        <outlet property="qualifyingOfferView" destination="iQJ-gB-9bT" id="EMO-gX-xYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hsr-86-SnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,4 +226,7 @@
             <point key="canvasLocation" x="37" y="170"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder.png" width="248" height="300"/>
+    </resources>
 </document>

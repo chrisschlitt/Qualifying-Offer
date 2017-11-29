@@ -25,6 +25,9 @@ class QualifyingOfferCell: UICollectionViewCell {
         }
     }
     
+    var expanded = false
+    var loading = false
+    
     /* UI Elements */
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameView: UILabel!

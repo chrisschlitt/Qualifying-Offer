@@ -19,7 +19,7 @@ class LoadViewController: UIViewController {
     /* Data Elements */
     var playerDictionary: [String:Player] = [String:Player]()
     var offers: [QualifyingOffer] = [QualifyingOffer]()
-    
+    var qualifyingOffer: Double = 0.0
     
     
     override func viewDidLoad() {
@@ -36,7 +36,9 @@ class LoadViewController: UIViewController {
             if(success){
                 self.playerDictionary = playerDictionary
                 
-                self.loadingLabel.text = "Downloading Offers"
+                DispatchQueue.main.async {
+                    self.loadingLabel.text = "Downloading Offers"
+                }
                 self.download { (success, offers) in
                     if(success) {
                         self.offers = offers
@@ -66,7 +68,18 @@ class LoadViewController: UIViewController {
         DataFetcher.fetch(url) { (success, data) in
             if(success){
                 let offers = DataParser.parseQualifyingOffers(data, players: self.playerDictionary)
-                completion(true, offers)
+                let topOffers = Array(offers.sorted(by: >)[0..<150])
+                
+                var qualifyingOffer = 0.0
+                var count = 0
+                for offer in topOffers {
+                    qualifyingOffer += offer.salary
+                    count += 1
+                }
+                
+                self.qualifyingOffer = qualifyingOffer / Double(count)
+                
+                completion(true, topOffers)
             } else {
                 completion(false, [QualifyingOffer]())
             }
@@ -78,6 +91,9 @@ class LoadViewController: UIViewController {
         let url = "http://legacy.baseballprospectus.com/sortable/playerids/playerid_list.csv"
         DataFetcher.fetch(url) { (success, data) in
             if(success){
+                DispatchQueue.main.async {
+                    self.loadingLabel.text = "Parsing Player Index"
+                }
                 let players = DataParser.parsePlayerIdentifications(data)
                 completion(true, players)
             } else {
@@ -91,6 +107,7 @@ class LoadViewController: UIViewController {
         
         if let tabViewController = segue.destination as? TabViewController {
             tabViewController.offers = self.offers
+            tabViewController.qualifyingOffer = self.qualifyingOffer
         }
         
     }
