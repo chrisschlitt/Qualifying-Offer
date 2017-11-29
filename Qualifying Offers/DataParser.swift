@@ -11,9 +11,9 @@ import SwiftSoup
 
 class DataParser {
     
-    // Parse the qualifying offers page
-    public static func parseQualifyingOffers(_ rawData: String, players: [String:Player]) -> [QualifyingOffer] {
-        var offers = [QualifyingOffer]()
+    // Parse the salaries page
+    public static func parseSalaries(_ rawData: String, players: [String:Player]) -> [PlayerSalary] {
+        var salaries = [PlayerSalary]()
         
         do {
             let parsedDocument: Document = try SwiftSoup.parse(rawData)
@@ -31,8 +31,8 @@ class DataParser {
                 let firstName = playerNameComponents[1]
                 
                 if let player = players[firstName + " " + lastName] {
-                    let qualifyingOffer = QualifyingOffer(player: player, salary: playerSalaryRaw)
-                    offers.append(qualifyingOffer)
+                    let salary = PlayerSalary(player: player, salary: playerSalaryRaw)
+                    salaries.append(salary)
                 }
             }
             
@@ -42,7 +42,7 @@ class DataParser {
             print("Unknown Error")
         }
         
-        return offers
+        return salaries
     }
     
     // Parse Player Information
@@ -76,6 +76,45 @@ class DataParser {
         }
         
         return players
+    }
+    
+    // Parse Player Stats
+    public static func parsePlayerStats(_ rawData: String) -> Stats {
+        var stats = Stats(type: .batter)
+        
+        do {
+            let parsedDocument: Document = try SwiftSoup.parse(rawData, "", Parser.xmlParser())
+            if let statsTag = try! parsedDocument.getElementsByTag("batting").first() {
+                stats.addStat(stat: "AB", value: try! statsTag.attr("s_ab"))
+                stats.addStat(stat: "HR", value: try! statsTag.attr("s_hr"))
+                stats.addStat(stat: "RBI", value: try! statsTag.attr("s_rbi"))
+                stats.addStat(stat: "H", value: try! statsTag.attr("s_h"))
+                stats.addStat(stat: "SB", value: try! statsTag.attr("s_sb"))
+                stats.addStat(stat: "AVG", value: try! statsTag.attr("avg"))
+                stats.addStat(stat: "R", value: try! statsTag.attr("s_r"))
+                stats.addStat(stat: "1B", value: try! statsTag.attr("s_single"))
+                stats.addStat(stat: "2B", value: try! statsTag.attr("s_double"))
+                stats.addStat(stat: "3B", value: try! statsTag.attr("s_triple"))
+                stats.addStat(stat: "BB", value: try! statsTag.attr("s_bb"))
+                stats.addStat(stat: "K", value: try! statsTag.attr("s_so"))
+            } else if let statsTag = try! parsedDocument.getElementsByTag("pitching").first() {
+                stats = Stats(type: .pitcher)
+                stats.addStat(stat: "IP", value: try! statsTag.attr("s_ip"))
+                stats.addStat(stat: "H", value: try! statsTag.attr("s_h"))
+                stats.addStat(stat: "ER", value: try! statsTag.attr("s_er"))
+                stats.addStat(stat: "R", value: try! statsTag.attr("s_r"))
+                stats.addStat(stat: "BB", value: try! statsTag.attr("s_bb"))
+                stats.addStat(stat: "K", value: try! statsTag.attr("s_k"))
+                stats.addStat(stat: "SV", value: try! statsTag.attr("s_sv"))
+            }
+            
+        } catch Exception.Error(let type, let message) {
+            print(message)
+        } catch {
+            print("Unknown Error")
+        }
+        
+        return stats
     }
     
 }

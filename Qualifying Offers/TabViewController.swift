@@ -10,7 +10,7 @@ import UIKit
 
 class TabViewController: UITabBarController {
 
-    var offers: [QualifyingOffer] = [QualifyingOffer]()
+    var salaries: [PlayerSalary] = [PlayerSalary]()
     var qualifyingOffer: Double = 0.0
     
     override func viewDidLoad() {

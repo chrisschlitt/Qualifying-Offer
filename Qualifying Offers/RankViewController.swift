@@ -17,9 +17,9 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var qualifyingOfferLabel: UILabel!
     
     /* Data Elements */
-    var offers: [QualifyingOffer] {
+    var salaries: [PlayerSalary] {
         get {
-            return (self.tabBarController as! TabViewController).offers
+            return (self.tabBarController as! TabViewController).salaries
         }
     }
     var qualifyingOffer: Double {
@@ -49,25 +49,25 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.offers.count
+        return self.salaries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Qualifying Offer Cell", for: indexPath) as! QualifyingOfferCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Player Cell", for: indexPath) as! PlayerCell
         
         // UI Changes
         cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         cell.expanded = false
         cell.playerImageView.image = UIImage(named: "placeholder.png")
         
-        cell.setOffer(offers[indexPath.row])
+        cell.setOffer(salaries[indexPath.row])
 
-        if(offers[indexPath.row].player.image == nil){
-            DataFetcher.fetchImage(offers[indexPath.row].player) { (success, image) in
+        if(salaries[indexPath.row].player.image == nil){
+            DataFetcher.fetchImage(salaries[indexPath.row].player) { (success, image) in
                 if(success){
                     DispatchQueue.main.async {
-                        self.offers[indexPath.row].player.image = image!
-                        if(cell.offer.player == self.offers[indexPath.row].player){
+                        self.salaries[indexPath.row].player.image = image!
+                        if(cell.offer.player == self.salaries[indexPath.row].player){
                             cell.playerImageView.image = image!
                             collectionView.reloadItems(at: [indexPath])
                         }
@@ -75,10 +75,14 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         } else {
-            cell.playerImageView.image = offers[indexPath.row].player.image
+            cell.playerImageView.image = salaries[indexPath.row].player.image
         }
         
-        
+        if(cell.offer.player.inFocus && cell.offer.player.stats != nil){
+            cell.playerStatsLabel.text = "\(cell.offer.player.stats!)"
+        } else {
+            
+        }
         
         
         return cell
@@ -89,7 +93,7 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var height: CGFloat = 75.0
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? QualifyingOfferCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? PlayerCell {
             if(cell.expanded){
                 height = 300.0
             }
@@ -100,14 +104,31 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath) as! QualifyingOfferCell  // or whatever you collection view cell class name is.
+        let cell = collectionView.cellForItem(at: indexPath) as! PlayerCell  // or whatever you collection view cell class name is.
+        let player = cell.offer.player
+        player.inFocus = player.inFocus == false
+        cell.expanded = player.inFocus
         
-        cell.offer.player.inFocus = cell.offer.player.inFocus == false
-        cell.expanded = cell.offer.player.inFocus
-        print("Set to \(cell.expanded)")
+        if(cell.expanded && !player.statsRequested){
+            player.statsRequested = true
+            
+            let url = "http://gd2.mlb.com/components/game/mlb/year_2017/\(player.type)s/\(player.mlbCode).xml"
+            
+            DataFetcher.fetch(url, { (success, rawData) in
+                let stats = DataParser.parsePlayerStats(rawData)
+                player.stats = stats
+                
+                DispatchQueue.main.async {
+                    if (collectionView.cellForItem(at: indexPath) as! PlayerCell).offer.player == player {
+                        collectionView.reloadItems(at: [indexPath])
+                    }
+                }
+            })
+        }
+        
         cell.isSelected = false
-        
         collectionView.reloadItems(at: [indexPath])
+        
     }
     
     

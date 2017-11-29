@@ -13,6 +13,7 @@ class DataFetcher {
     
     // Fetch remote data
     static func fetch(_ endpoint: String, _ completion: @escaping (Bool, String) -> Void){
+        print("Fetching: " + endpoint)
         let baseURL = URL(string: endpoint)!
         
         // Create the URL Session object and connection to the server

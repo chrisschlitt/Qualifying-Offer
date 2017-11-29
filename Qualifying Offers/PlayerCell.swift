@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class QualifyingOfferCell: UICollectionViewCell {
+class PlayerCell: UICollectionViewCell {
     
     @IBInspectable
     public var cornerRadius: CGFloat = 3.0 {
@@ -32,11 +32,12 @@ class QualifyingOfferCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameView: UILabel!
     @IBOutlet weak var playerSalaryView: UILabel!
+    @IBOutlet weak var playerStatsLabel: UILabel!
     
     /* Data Elements */
-    var offer: QualifyingOffer!
+    var offer: PlayerSalary!
     
-    public func setOffer(_ offer: QualifyingOffer) -> Void {
+    public func setOffer(_ offer: PlayerSalary) -> Void {
         self.offer = offer
         
         self.playerNameView.text = offer.player.firstName + " " + offer.player.lastName
