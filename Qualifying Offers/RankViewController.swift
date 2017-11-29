@@ -50,6 +50,23 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.setOffer(offers[indexPath.row])
         
+        if(offers[indexPath.row].player.image == nil){
+            DataFetcher.fetchImage(offers[indexPath.row].player) { (success, image) in
+                if(success){
+                    DispatchQueue.main.async {
+                        self.offers[indexPath.row].player.image = image!
+                        cell.playerImageView.image = image!
+                    }
+                }
+            }
+        } else {
+            cell.playerImageView.image = offers[indexPath.row].player.image
+        }
+        
+        
+        
+        
+        
         return cell
     }
     

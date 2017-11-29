@@ -12,7 +12,7 @@ import SwiftSoup
 class DataParser {
     
     // Parse the qualifying offers page
-    public static func parseQualifyingOffers(_ rawData: String) -> [QualifyingOffer] {
+    public static func parseQualifyingOffers(_ rawData: String, players: [String:Player]) -> [QualifyingOffer] {
         var offers = [QualifyingOffer]()
         
         do {
@@ -22,10 +22,18 @@ class DataParser {
             let tableBody: Element = try! table.select("tbody").first()!
             
             for row: Element in tableBody.children() {
-                let playerName = try! row.getElementsByClass("player-name").first()!.text()
-                let playerSalary = try! row.getElementsByClass("player-salary").first()!.text()
-                let qualifyingOffer = QualifyingOffer(player: playerName, salary: playerSalary)
-                offers.append(qualifyingOffer)
+                let playerNameRaw = try! row.getElementsByClass("player-name").first()!.text()
+                let playerSalaryRaw = try! row.getElementsByClass("player-salary").first()!.text()
+                
+                // Extract Name
+                let playerNameComponents = playerNameRaw.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
+                let lastName = playerNameComponents[0]
+                let firstName = playerNameComponents[1]
+                
+                if let player = players[firstName + " " + lastName] {
+                    let qualifyingOffer = QualifyingOffer(player: player, salary: playerSalaryRaw)
+                    offers.append(qualifyingOffer)
+                }
             }
             
         } catch Exception.Error(let type, let message) {
@@ -35,6 +43,40 @@ class DataParser {
         }
         
         return offers
+    }
+    
+    // Parse Player Information
+    public static func parsePlayerIdentifications(_ rawData: String) -> [String:Player] {
+        var players = [String:Player]()
+        
+        let rows = rawData.components(separatedBy: "\n")
+        for i in 1..<rows.count {
+            print(rows[i])
+            
+            let rowValues = rows[i].replacingOccurrences(of: "\"", with: "").components(separatedBy: ",")
+            
+            if(rowValues.count != 6){
+                continue
+            }
+            
+            let firstName = rowValues[1]
+            let lastName = rowValues[0]
+            var playerId = 0
+            if let playerIdInt = Int(rowValues[2]) {
+                playerId = playerIdInt
+            }
+            let davenportCode = rowValues[3]
+            var mlbCode = 0
+            if let mlbCodeInt = Int(rowValues[4]) {
+                mlbCode = mlbCodeInt
+            }
+            let retrosheetCode = rowValues[5]
+            
+            let playerIdentification = Player(firstName: firstName, lastName: lastName, playerId: playerId, davenportCode: davenportCode, mlbCode: mlbCode, retrosheetCode: retrosheetCode)
+            players[firstName + " " + lastName] = playerIdentification
+        }
+        
+        return players
     }
     
 }

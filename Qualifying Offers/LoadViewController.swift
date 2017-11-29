@@ -17,6 +17,7 @@ class LoadViewController: UIViewController {
     
     
     /* Data Elements */
+    var playerDictionary: [String:Player] = [String:Player]()
     var offers: [QualifyingOffer] = [QualifyingOffer]()
     
     
@@ -29,18 +30,27 @@ class LoadViewController: UIViewController {
         self.loadingViewContainer.addSubview(loadingView)
         loadingView.startAnimating()
         
-        self.loadingLabel.text = "Downloading Offers"
+        self.loadingLabel.text = "Downloading Player Index"
         
-        download { (success, offers) in
-            if(success) {
-                self.offers = offers
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "Go to Stats", sender: self)
+        downloadPlayerDictionary { (success, playerDictionary) in
+            if(success){
+                self.playerDictionary = playerDictionary
+                
+                self.loadingLabel.text = "Downloading Offers"
+                self.download { (success, offers) in
+                    if(success) {
+                        self.offers = offers
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "Go to Stats", sender: self)
+                        }
+                    } else {
+                        print("Error Downloading Offers")
+                    }
+                    
                 }
             } else {
-                print("Error Downloading Offers")
+                print("Error Downloading Player Index")
             }
-            
         }
         
     }
@@ -55,10 +65,23 @@ class LoadViewController: UIViewController {
         let url = "https://questionnaire-148920.appspot.com/swe/"
         DataFetcher.fetch(url) { (success, data) in
             if(success){
-                let offers = DataParser.parseQualifyingOffers(data)
+                let offers = DataParser.parseQualifyingOffers(data, players: self.playerDictionary)
                 completion(true, offers)
             } else {
                 completion(false, [QualifyingOffer]())
+            }
+        }
+    }
+    
+    // Download the player dictionary
+    private func downloadPlayerDictionary(_ completion: @escaping (Bool, [String:Player]) -> Void){
+        let url = "http://legacy.baseballprospectus.com/sortable/playerids/playerid_list.csv"
+        DataFetcher.fetch(url) { (success, data) in
+            if(success){
+                let players = DataParser.parsePlayerIdentifications(data)
+                completion(true, players)
+            } else {
+                completion(false, [String:Player]())
             }
         }
     }

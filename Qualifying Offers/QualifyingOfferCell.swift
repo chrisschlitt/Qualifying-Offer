@@ -25,7 +25,6 @@ class QualifyingOfferCell: UICollectionViewCell {
         }
     }
     
-    
     /* UI Elements */
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameView: UILabel!
@@ -37,8 +36,10 @@ class QualifyingOfferCell: UICollectionViewCell {
     public func setOffer(_ offer: QualifyingOffer) -> Void {
         self.offer = offer
         
-        self.playerNameView.text = offer.firstName + " " + offer.lastName
+        self.playerNameView.text = offer.player.firstName + " " + offer.player.lastName
         self.playerSalaryView.text = offer.salary.formatted
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        
     }
     
 }

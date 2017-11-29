@@ -7,25 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 // A qualifying offer for a new free agent
 class QualifyingOffer: Comparable, CustomStringConvertible {
     
     // Data components
-    let firstName: String
-    let lastName: String
+    let player: Player
     let salary: Double
     
     // String formatter
     var description: String {
-        return self.firstName + " " + self.lastName + ": " + self.salary.formatted
+        return self.player.firstName + " " + self.player.lastName + ": " + self.salary.formatted
     }
     
     // Initializer
-    init(player: String, salary: String) {
-        let playerName = player.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: ", ")
-        self.lastName = playerName[0]
-        self.firstName = playerName[1]
+    init(player: Player, salary: String) {
+        self.player = player
         
         if let salaryValue = Double(salary.trimmingCharacters(in: .whitespacesAndNewlines).digits) {
             self.salary = salaryValue
@@ -45,4 +43,27 @@ class QualifyingOffer: Comparable, CustomStringConvertible {
     static func ==(lhs: QualifyingOffer, rhs: QualifyingOffer) -> Bool {
         return lhs.salary == rhs.salary
     }
+}
+
+// A player connecter to the MLB API
+class Player {
+    
+    // Data components
+    var firstName: String
+    var lastName: String
+    var playerId: Int
+    var davenportCode: String
+    var mlbCode: Int
+    var retrosheetCode: String
+    var image: UIImage?
+    
+    init(firstName: String, lastName: String, playerId: Int, davenportCode: String, mlbCode: Int, retrosheetCode: String){
+        self.firstName = firstName
+        self.lastName = lastName
+        self.playerId = playerId
+        self.davenportCode = davenportCode
+        self.mlbCode = mlbCode
+        self.retrosheetCode = retrosheetCode
+    }
+    
 }
