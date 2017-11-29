@@ -1,6 +1,6 @@
 //
 //  DataFetcher.swift
-//  Qualifying Offers
+//  Handles downloading data from the internet
 //
 //  Created by Christopher Schlitt on 11/28/17.
 //  Copyright © 2017 Christopher Schlitt. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 class DataFetcher {
-    
+    // Fetch remote data
     static func fetch(_ endpoint: String, _ completion: @escaping (Bool, String) -> Void){
         let baseURL = URL(string: endpoint)!
         
@@ -21,7 +21,7 @@ class DataFetcher {
             }
             
             if let stingData = String(data: data!, encoding: .utf8) {
-                completion(false, stingData)
+                completion(true, stingData)
             } else {
                 completion(false, "Could not generate string")
             }

@@ -1,12 +1,17 @@
 PODS:
+  - NVActivityIndicatorView (4.0.1):
+    - NVActivityIndicatorView/Presenter (= 4.0.1)
+  - NVActivityIndicatorView/Presenter (4.0.1)
   - SwiftSoup (1.5.8)
 
 DEPENDENCIES:
-  - SwiftSoup (~> 1.5)
+  - NVActivityIndicatorView
+  - SwiftSoup
 
 SPEC CHECKSUMS:
+  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
   SwiftSoup: 86a1f5ad07b7e3d14ab1a9324a58c75ae2215e79
 
-PODFILE CHECKSUM: 8ff23cc439e0a4272163be221ef2470ee61b5663
+PODFILE CHECKSUM: f9731822f32b9f9adabd791fbe0636e4eb4983d1
 
 COCOAPODS: 1.3.1

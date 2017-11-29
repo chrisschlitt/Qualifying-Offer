@@ -7,22 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493039021FCE54C6006996C3 /* DataCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039011FCE54C6006996C3 /* DataCollections.swift */; };
+		493039041FCE569D006996C3 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039031FCE569D006996C3 /* TabViewController.swift */; };
+		493039061FCE5795006996C3 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039051FCE5795006996C3 /* LoadViewController.swift */; };
 		4943E8741FCE458D00BAFA87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4943E8731FCE458D00BAFA87 /* AppDelegate.swift */; };
-		4943E8761FCE458D00BAFA87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4943E8751FCE458D00BAFA87 /* ViewController.swift */; };
+		4943E8761FCE458D00BAFA87 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4943E8751FCE458D00BAFA87 /* RankViewController.swift */; };
 		4943E8791FCE458D00BAFA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4943E8771FCE458D00BAFA87 /* Main.storyboard */; };
 		4943E87C1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4943E87A1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodeld */; };
 		4943E87E1FCE458D00BAFA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4943E87D1FCE458D00BAFA87 /* Assets.xcassets */; };
 		4943E8811FCE458D00BAFA87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4943E87F1FCE458D00BAFA87 /* LaunchScreen.storyboard */; };
 		49ABD74A1FCE4638008E1F8E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABD7491FCE4638008E1F8E /* DataFetcher.swift */; };
 		49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABD74B1FCE4764008E1F8E /* DataParser.swift */; };
+		49DE9F9F1FCE6171008759DF /* QualifyingOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */; };
 		C0C87904616FE7B0089EBC1D /* Pods_Qualifying_Offers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33BCC39B7B998336DD543FB1 /* Pods-Qualifying Offers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.debug.xcconfig"; sourceTree = "<group>"; };
+		493039011FCE54C6006996C3 /* DataCollections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollections.swift; sourceTree = "<group>"; };
+		493039031FCE569D006996C3 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		493039051FCE5795006996C3 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		4943E8701FCE458D00BAFA87 /* Qualifying Offers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Qualifying Offers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4943E8731FCE458D00BAFA87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4943E8751FCE458D00BAFA87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4943E8751FCE458D00BAFA87 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		4943E8781FCE458D00BAFA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4943E87B1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Qualifying_Offers.xcdatamodel; sourceTree = "<group>"; };
 		4943E87D1FCE458D00BAFA87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +37,7 @@
 		4943E8821FCE458D00BAFA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49ABD7491FCE4638008E1F8E /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		49ABD74B1FCE4764008E1F8E /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualifyingOfferCell.swift; sourceTree = "<group>"; };
 		5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qualifying_Offers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF996D85FE74AE5D6C942323 /* Pods-Qualifying Offers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4943E8731FCE458D00BAFA87 /* AppDelegate.swift */,
-				4943E8751FCE458D00BAFA87 /* ViewController.swift */,
+				4943E8751FCE458D00BAFA87 /* RankViewController.swift */,
 				4943E8771FCE458D00BAFA87 /* Main.storyboard */,
 				4943E87D1FCE458D00BAFA87 /* Assets.xcassets */,
 				4943E87F1FCE458D00BAFA87 /* LaunchScreen.storyboard */,
@@ -84,6 +92,10 @@
 				4943E87A1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodeld */,
 				49ABD7491FCE4638008E1F8E /* DataFetcher.swift */,
 				49ABD74B1FCE4764008E1F8E /* DataParser.swift */,
+				493039011FCE54C6006996C3 /* DataCollections.swift */,
+				493039031FCE569D006996C3 /* TabViewController.swift */,
+				493039051FCE5795006996C3 /* LoadViewController.swift */,
+				49DE9F9E1FCE6171008759DF /* QualifyingOfferCell.swift */,
 			);
 			path = "Qualifying Offers";
 			sourceTree = "<group>";
@@ -208,10 +220,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,9 +241,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4943E87C1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodeld in Sources */,
+				493039021FCE54C6006996C3 /* DataCollections.swift in Sources */,
+				493039061FCE5795006996C3 /* LoadViewController.swift in Sources */,
+				49DE9F9F1FCE6171008759DF /* QualifyingOfferCell.swift in Sources */,
 				49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */,
-				4943E8761FCE458D00BAFA87 /* ViewController.swift in Sources */,
+				4943E8761FCE458D00BAFA87 /* RankViewController.swift in Sources */,
 				4943E8741FCE458D00BAFA87 /* AppDelegate.swift in Sources */,
+				493039041FCE569D006996C3 /* TabViewController.swift in Sources */,
 				49ABD74A1FCE4638008E1F8E /* DataFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

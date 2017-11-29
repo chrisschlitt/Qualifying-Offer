@@ -1,5 +1,6 @@
 use_frameworks!
 
 target 'Qualifying Offers' do
-  pod 'SwiftSoup', '~> 1.5'
+  pod "SwiftSoup"
+  pod 'NVActivityIndicatorView'
 end

@@ -1,6 +1,6 @@
 //
 //  DataParser.swift
-//  Qualifying Offers
+//  Handles parsing raw data into structured objects
 //
 //  Created by Christopher Schlitt on 11/28/17.
 //  Copyright © 2017 Christopher Schlitt. All rights reserved.
@@ -11,7 +11,8 @@ import SwiftSoup
 
 class DataParser {
     
-    public static func parse(_ rawData: String) -> [QualifyingOffer] {
+    // Parse the qualifying offers page
+    public static func parseQualifyingOffers(_ rawData: String) -> [QualifyingOffer] {
         var offers = [QualifyingOffer]()
         
         do {
@@ -27,7 +28,6 @@ class DataParser {
                 offers.append(qualifyingOffer)
             }
             
-            
         } catch Exception.Error(let type, let message) {
             print(message)
         } catch {
@@ -39,43 +39,18 @@ class DataParser {
     
 }
 
-class QualifyingOffer: Comparable, CustomStringConvertible {
-    
-    let player: String
-    let salary: Double
-    
-    var description: String {
-        return self.player + ": " + self.salary.formatted
-    }
-    
-    init(player: String, salary: String) {
-        self.player = player.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if let salaryValue = Double(salary.trimmingCharacters(in: .whitespacesAndNewlines).digits) {
-            self.salary = salaryValue
-        } else {
-            self.salary = 0
-        }
-        
-        
-    }
-    
-    static func <(lhs: QualifyingOffer, rhs: QualifyingOffer) -> Bool {
-        return lhs.salary < rhs.salary
-    }
-    
-    static func ==(lhs: QualifyingOffer, rhs: QualifyingOffer) -> Bool {
-        return lhs.salary == rhs.salary
-    }
-}
+
+/* Primitive Helper Extensions */
 
 extension String {
+    // Extract only the digits from a string
     var digits: String {
         return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }
 }
 
 extension Double {
+    // Format a double into a salary
     var formatted: String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
