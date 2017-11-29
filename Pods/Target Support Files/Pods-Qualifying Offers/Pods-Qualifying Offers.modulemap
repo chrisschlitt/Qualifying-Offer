@@ -1,0 +1,6 @@
+framework module Pods_Qualifying_Offers {
+  umbrella header "Pods-Qualifying Offers-umbrella.h"
+
+  export *
+  module * { export * }
+}
