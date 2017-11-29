@@ -26,9 +26,11 @@ class LoadViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let loadingView = NVActivityIndicatorView(frame: self.loadingViewContainer.bounds, type: .lineScale, color: UIColor.blue, padding: 30.0)
+        let loadingView = NVActivityIndicatorView(frame: self.loadingViewContainer.bounds, type: .lineScale, color: UIColor.fromHex("2662B5"), padding: 30.0)
         self.loadingViewContainer.addSubview(loadingView)
         loadingView.startAnimating()
+        
+        self.loadingLabel.font = UIFont(name: "Lato-Bold", size: 18.0)
         
         self.loadingLabel.text = "Downloading Player Index"
         
@@ -68,7 +70,7 @@ class LoadViewController: UIViewController {
         DataFetcher.fetch(url) { (success, data) in
             if(success){
                 let salaries = DataParser.parseSalaries(data, players: self.playerDictionary)
-                let topSalaries = Array(salaries.sorted(by: >)[0..<150])
+                let topSalaries = Array(salaries.sorted(by: >)[0..<125])
                 
                 var qualifyingOffer = 0.0
                 var count = 0
@@ -77,7 +79,9 @@ class LoadViewController: UIViewController {
                     count += 1
                 }
                 
-                self.qualifyingOffer = qualifyingOffer / Double(count)
+                let rawQualifyingOfferValue = qualifyingOffer / Double(count)
+                
+                self.qualifyingOffer = Double(round(rawQualifyingOfferValue * 100)/100)
                 
                 completion(true, topSalaries)
             } else {

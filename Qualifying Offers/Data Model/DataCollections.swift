@@ -60,6 +60,7 @@ class Player: Equatable {
     var stats: Stats?
     var type: PlayerType = .batter
     var statsRequested: Bool = false
+    var heatmap: UIImage?
     
     init(firstName: String, lastName: String, playerId: Int, davenportCode: String, mlbCode: Int, retrosheetCode: String){
         self.firstName = firstName
@@ -81,29 +82,63 @@ class Stats: CustomStringConvertible {
     // http://gd2.mlb.com/components/game/mlb/year_2007/batters/121358.xml
     
     let type: PlayerType
-    var stats: [String:Any] = [String:Any]()
+    var stats: [(String, String)] = [(String, String)]()
     
     init(type: PlayerType){
         self.type = type
     }
     
-    func addStat(stat: String, value: Any){
-        self.stats[stat] = value
+    func addStat(stat: String, value: String){
+        self.stats.append((stat, value))
     }
 
-    func getStat(stat: String) -> Any? {
-        return self.stats[stat]
+    func getStat(stat: String) -> String? {
+        for statTuple in stats {
+            if statTuple.0 == stat {
+                return statTuple.1
+            }
+        }
+        return nil
     }
     
     var description: String {
+        return getStatString(start: 0, end: stats.count)
+    }
+    
+    var firstHalf: String {
+        get {
+            var middle = stats.count / 2
+            if(stats.count % 2 != 0){
+                middle += 1
+            }
+            
+            return getStatString(start: 0, end: middle)
+        }
+    }
+    
+    var secondHalf: String {
+        get {
+            var middle = stats.count / 2
+            if(stats.count % 2 != 0){
+                middle += 1
+            }
+            
+            return getStatString(start: middle, end: stats.count)
+        }
+    }
+    
+    
+    
+    private func getStatString(start: Int, end: Int) -> String {
         var statString = ""
         
         var count = 0
-        for key in stats.keys {
+        for i in start..<end {
+            let statTuple = stats[i]
             if(count > 0){
-                statString += "\n"
+            statString += "\n"
             }
-            statString += key + ": \(stats[key]!)"
+            statString += statTuple.0 + ": " + statTuple.1
             count += 1
         }
         

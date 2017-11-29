@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4926EA131FCF4C65007A836E /* CSVLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA121FCF4C65007A836E /* CSVLoader.swift */; };
+		4926EA151FCF4CEF007A836E /* HeatmapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */; };
+		4926EA171FCF4FB1007A836E /* FrancoStrikes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */; };
+		4926EA191FCF4FB7007A836E /* FrancoHits.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4926EA181FCF4FB7007A836E /* FrancoHits.csv */; };
 		493039021FCE54C6006996C3 /* DataCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039011FCE54C6006996C3 /* DataCollections.swift */; };
 		493039041FCE569D006996C3 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039031FCE569D006996C3 /* TabViewController.swift */; };
 		493039061FCE5795006996C3 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039051FCE5795006996C3 /* LoadViewController.swift */; };
@@ -20,11 +24,18 @@
 		49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ABD74B1FCE4764008E1F8E /* DataParser.swift */; };
 		49DE9F9F1FCE6171008759DF /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE9F9E1FCE6171008759DF /* PlayerCell.swift */; };
 		49DE9FA11FCE8693008759DF /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DE9FA01FCE8693008759DF /* placeholder.png */; };
+		49DE9FAA1FCF2B65008759DF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49DE9FA81FCF2B64008759DF /* Lato-Bold.ttf */; };
+		49DE9FAB1FCF2B65008759DF /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49DE9FA91FCF2B64008759DF /* Lato-Black.ttf */; };
+		49DE9FAD1FCF2C8F008759DF /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE9FAC1FCF2C8F008759DF /* UIExtensions.swift */; };
 		C0C87904616FE7B0089EBC1D /* Pods_Qualifying_Offers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33BCC39B7B998336DD543FB1 /* Pods-Qualifying Offers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.debug.xcconfig"; sourceTree = "<group>"; };
+		4926EA121FCF4C65007A836E /* CSVLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVLoader.swift; sourceTree = "<group>"; };
+		4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapGenerator.swift; sourceTree = "<group>"; };
+		4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FrancoStrikes.csv; sourceTree = "<group>"; };
+		4926EA181FCF4FB7007A836E /* FrancoHits.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FrancoHits.csv; sourceTree = "<group>"; };
 		493039011FCE54C6006996C3 /* DataCollections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollections.swift; sourceTree = "<group>"; };
 		493039031FCE569D006996C3 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		493039051FCE5795006996C3 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +51,9 @@
 		49ABD74B1FCE4764008E1F8E /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		49DE9F9E1FCE6171008759DF /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		49DE9FA01FCE8693008759DF /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		49DE9FA81FCF2B64008759DF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		49DE9FA91FCF2B64008759DF /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		49DE9FAC1FCF2C8F008759DF /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		5F5FCB358D6616EF9241943D /* Pods_Qualifying_Offers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qualifying_Offers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF996D85FE74AE5D6C942323 /* Pods-Qualifying Offers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,21 +100,76 @@
 			isa = PBXGroup;
 			children = (
 				4943E8731FCE458D00BAFA87 /* AppDelegate.swift */,
-				4943E8751FCE458D00BAFA87 /* RankViewController.swift */,
-				4943E8771FCE458D00BAFA87 /* Main.storyboard */,
+				49DE9FA31FCF2B04008759DF /* UI */,
+				49DE9FA41FCF2B10008759DF /* Storyboards */,
+				49DE9FA21FCF2AEC008759DF /* Data Model */,
+				49DE9FA51FCF2B1E008759DF /* Resources */,
 				4943E87D1FCE458D00BAFA87 /* Assets.xcassets */,
-				4943E87F1FCE458D00BAFA87 /* LaunchScreen.storyboard */,
 				4943E8821FCE458D00BAFA87 /* Info.plist */,
 				4943E87A1FCE458D00BAFA87 /* Qualifying_Offers.xcdatamodeld */,
+			);
+			path = "Qualifying Offers";
+			sourceTree = "<group>";
+		};
+		49DE9FA21FCF2AEC008759DF /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
 				49ABD7491FCE4638008E1F8E /* DataFetcher.swift */,
 				49ABD74B1FCE4764008E1F8E /* DataParser.swift */,
 				493039011FCE54C6006996C3 /* DataCollections.swift */,
+				4926EA121FCF4C65007A836E /* CSVLoader.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		49DE9FA31FCF2B04008759DF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4926EA181FCF4FB7007A836E /* FrancoHits.csv */,
+				4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */,
+				4943E8751FCE458D00BAFA87 /* RankViewController.swift */,
 				493039031FCE569D006996C3 /* TabViewController.swift */,
 				493039051FCE5795006996C3 /* LoadViewController.swift */,
 				49DE9F9E1FCE6171008759DF /* PlayerCell.swift */,
+				49DE9FAC1FCF2C8F008759DF /* UIExtensions.swift */,
+				4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		49DE9FA41FCF2B10008759DF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4943E8771FCE458D00BAFA87 /* Main.storyboard */,
+				4943E87F1FCE458D00BAFA87 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		49DE9FA51FCF2B1E008759DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49DE9FA71FCF2B31008759DF /* Fonts */,
+				49DE9FA61FCF2B2A008759DF /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		49DE9FA61FCF2B2A008759DF /* Images */ = {
+			isa = PBXGroup;
+			children = (
 				49DE9FA01FCE8693008759DF /* placeholder.png */,
 			);
-			path = "Qualifying Offers";
+			path = Images;
+			sourceTree = "<group>";
+		};
+		49DE9FA71FCF2B31008759DF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				49DE9FA91FCF2B64008759DF /* Lato-Black.ttf */,
+				49DE9FA81FCF2B64008759DF /* Lato-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		801EC7884B6C5D9C526BB9AA /* Pods */ = {
@@ -175,9 +244,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4943E8811FCE458D00BAFA87 /* LaunchScreen.storyboard in Resources */,
+				4926EA191FCF4FB7007A836E /* FrancoHits.csv in Resources */,
+				49DE9FAA1FCF2B65008759DF /* Lato-Bold.ttf in Resources */,
 				49DE9FA11FCE8693008759DF /* placeholder.png in Resources */,
 				4943E87E1FCE458D00BAFA87 /* Assets.xcassets in Resources */,
+				49DE9FAB1FCF2B65008759DF /* Lato-Black.ttf in Resources */,
 				4943E8791FCE458D00BAFA87 /* Main.storyboard in Resources */,
+				4926EA171FCF4FB1007A836E /* FrancoStrikes.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +321,12 @@
 				493039021FCE54C6006996C3 /* DataCollections.swift in Sources */,
 				493039061FCE5795006996C3 /* LoadViewController.swift in Sources */,
 				49DE9F9F1FCE6171008759DF /* PlayerCell.swift in Sources */,
+				4926EA151FCF4CEF007A836E /* HeatmapGenerator.swift in Sources */,
+				4926EA131FCF4C65007A836E /* CSVLoader.swift in Sources */,
 				49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */,
 				4943E8761FCE458D00BAFA87 /* RankViewController.swift in Sources */,
 				4943E8741FCE458D00BAFA87 /* AppDelegate.swift in Sources */,
+				49DE9FAD1FCF2C8F008759DF /* UIExtensions.swift in Sources */,
 				493039041FCE569D006996C3 /* TabViewController.swift in Sources */,
 				49ABD74A1FCE4638008E1F8E /* DataFetcher.swift in Sources */,
 			);

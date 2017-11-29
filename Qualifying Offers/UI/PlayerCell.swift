@@ -32,13 +32,16 @@ class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameView: UILabel!
     @IBOutlet weak var playerSalaryView: UILabel!
-    @IBOutlet weak var playerStatsLabel: UILabel!
+    @IBOutlet weak var playerStatsLabelA: UILabel!
+    @IBOutlet weak var playerStatsLabelB: UILabel!
+    @IBOutlet weak var playerHeatmapContainerView: UIView!
+    @IBOutlet weak var playerHeatmapImageView: UIImageView!
     
     /* Data Elements */
-    var offer: PlayerSalary!
+    var salary: PlayerSalary!
     
-    public func setOffer(_ offer: PlayerSalary) -> Void {
-        self.offer = offer
+    public func setSalary(_ offer: PlayerSalary) -> Void {
+        self.salary = offer
         
         self.playerNameView.text = offer.player.firstName + " " + offer.player.lastName
         self.playerSalaryView.text = offer.salary.formatted
