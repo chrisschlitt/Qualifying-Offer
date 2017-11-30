@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var updateSalariesButton: UIButton!
+    @IBOutlet weak var acknowledgementsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class SettingsViewController: UIViewController {
         self.updateSalariesButton.clipsToBounds = true
         self.updateSalariesButton.layer.cornerRadius = 3.0
         
+        self.acknowledgementsLabel.text = generateAcknowledgements()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -37,18 +39,37 @@ class SettingsViewController: UIViewController {
     
     @IBAction func updateSalariesButtonPressed(_ sender: Any) {
         print("Updating Salaries")
+        self.performSegue(withIdentifier: "Go to Load", sender: self)
     }
     
+    private func generateAcknowledgements() -> String {
+        var acknowledgements = ""
+        
+        
+        return acknowledgements
+    }
     
+    @IBAction func unwindFromLoadViewController( _ sender: UIStoryboardSegue) {
+        for viewController in (self.tabBarController as! TabViewController).viewControllers! {
+            print(viewController)
+            if viewController is RankViewController {
+                viewController.viewDidLoad()
+            }
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "Go to Load"){
+            let loadViewController = segue.destination as! LoadViewController
+            loadViewController.isInitialLoad = false
+        }
     }
-    */
+    
 
 }

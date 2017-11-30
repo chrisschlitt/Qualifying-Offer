@@ -21,6 +21,8 @@ class LoadViewController: UIViewController {
     var salaries: [PlayerSalary] = [PlayerSalary]()
     var qualifyingOffer: Double = 0.0
     
+    var isInitialLoad: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ class LoadViewController: UIViewController {
         
         self.loadingLabel.text = "Downloading Player Index"
         
-        downloadPlayerDictionary { (success, playerDictionary) in
+        self.downloadPlayerDictionary { (success, playerDictionary) in
             if(success){
                 self.playerDictionary = playerDictionary
                 
@@ -45,7 +47,12 @@ class LoadViewController: UIViewController {
                     if(success) {
                         self.salaries = salaries
                         DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "Go to Stats", sender: self)
+                            if(self.isInitialLoad){
+                                self.performSegue(withIdentifier: "Go to Stats", sender: self)
+                            } else {
+                                self.performSegue(withIdentifier: "Unwind from Load", sender: self)
+                            }
+                            
                         }
                     } else {
                         print("Error Downloading Salaries")
@@ -108,12 +115,14 @@ class LoadViewController: UIViewController {
     
     // Transfer the offer data to the tab view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if let tabViewController = segue.destination as? TabViewController {
             tabViewController.salaries = self.salaries
             tabViewController.qualifyingOffer = self.qualifyingOffer
+        } else if let settingsViewController = (segue.destination as? SettingsViewController) {
+            let tabViewController = settingsViewController.tabBarController as! TabViewController
+            tabViewController.salaries = self.salaries
+            tabViewController.qualifyingOffer = self.qualifyingOffer
         }
-        
     }
     
 
