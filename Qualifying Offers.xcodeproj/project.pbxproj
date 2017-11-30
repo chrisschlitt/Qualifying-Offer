@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492049AF1FCF7D2800B9E369 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */; };
 		4926EA131FCF4C65007A836E /* CSVLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA121FCF4C65007A836E /* CSVLoader.swift */; };
 		4926EA151FCF4CEF007A836E /* HeatmapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */; };
 		4926EA171FCF4FB1007A836E /* FrancoStrikes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		33BCC39B7B998336DD543FB1 /* Pods-Qualifying Offers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.debug.xcconfig"; sourceTree = "<group>"; };
+		492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4926EA121FCF4C65007A836E /* CSVLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVLoader.swift; sourceTree = "<group>"; };
 		4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapGenerator.swift; sourceTree = "<group>"; };
 		4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FrancoStrikes.csv; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				49DE9F9E1FCE6171008759DF /* PlayerCell.swift */,
 				49DE9FAC1FCF2C8F008759DF /* UIExtensions.swift */,
 				4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */,
+				492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				4943E8761FCE458D00BAFA87 /* RankViewController.swift in Sources */,
 				4943E8741FCE458D00BAFA87 /* AppDelegate.swift in Sources */,
 				49DE9FAD1FCF2C8F008759DF /* UIExtensions.swift in Sources */,
+				492049AF1FCF7D2800B9E369 /* SettingsViewController.swift in Sources */,
 				493039041FCE569D006996C3 /* TabViewController.swift in Sources */,
 				49ABD74A1FCE4638008E1F8E /* DataFetcher.swift in Sources */,
 			);

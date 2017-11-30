@@ -35,18 +35,7 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.qualifyingOfferValueLabel.text = self.qualifyingOffer.formatted
         self.qualifyingOfferView.layer.borderColor = UIColor.darkGray.cgColor
         self.qualifyingOfferView.layer.borderWidth = 1.5
-        /*
-        self.qualifyingOfferView.layer.backgroundColor = UIColor.fromHex("2662B5").cgColor
-        UIView.animate(withDuration: 0.5) {
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.fromHex("2662B5")
-        }
         
-        self.qualifyingOfferValueLabel.font = UIFont(name: "Lato-Bold", size: 30.0)
-        self.qualifyingOfferValueLabel.textColor = UIColor.groupTableViewBackground
-        
-        self.qualifyingOfferLabel.font = UIFont(name: "Lato-Black", size: 14.0)
-        self.qualifyingOfferLabel.textColor = UIColor.fromHex("C4C4C4")
-        */
         self.playerCollectionView.delegate = self
         self.playerCollectionView.dataSource = self
         
