@@ -86,14 +86,8 @@
                                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3h-69-9OT">
-                                                <rect key="frame" x="0.0" y="80" width="375" height="22"/>
-                                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="18"/>
-                                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b6-eg-nfb">
-                                                <rect key="frame" x="15" y="110" width="345" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b6-eg-nfb">
+                                                <rect key="frame" x="15" y="85" width="345" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
@@ -101,20 +95,17 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="WvO-jd-8ns" firstAttribute="centerX" secondItem="Lnf-rj-uNL" secondAttribute="centerX" id="2gX-Hw-UdV"/>
-                                            <constraint firstAttribute="trailing" secondItem="J3h-69-9OT" secondAttribute="trailing" id="7uM-KE-NaH"/>
                                             <constraint firstItem="k8b-9k-BFa" firstAttribute="top" secondItem="WvO-jd-8ns" secondAttribute="bottom" constant="6" id="A7Q-mu-5Wz"/>
                                             <constraint firstItem="k8b-9k-BFa" firstAttribute="centerX" secondItem="Lnf-rj-uNL" secondAttribute="centerX" id="C9H-aV-0z3"/>
                                             <constraint firstAttribute="trailing" secondItem="LWG-kc-I9J" secondAttribute="trailing" id="FK0-zy-G3B"/>
-                                            <constraint firstItem="1b6-eg-nfb" firstAttribute="top" secondItem="J3h-69-9OT" secondAttribute="bottom" constant="8" id="IIX-Xt-d7W"/>
                                             <constraint firstItem="WvO-jd-8ns" firstAttribute="top" secondItem="Lnf-rj-uNL" secondAttribute="top" id="Jzw-vc-Uua"/>
                                             <constraint firstItem="WvO-jd-8ns" firstAttribute="leading" secondItem="Lnf-rj-uNL" secondAttribute="leading" id="OKh-tv-A5l"/>
                                             <constraint firstAttribute="trailing" secondItem="1b6-eg-nfb" secondAttribute="trailing" constant="15" id="Tzb-8h-8G0"/>
                                             <constraint firstAttribute="bottom" secondItem="1b6-eg-nfb" secondAttribute="bottom" constant="15" id="UjR-ak-qma"/>
-                                            <constraint firstItem="J3h-69-9OT" firstAttribute="top" secondItem="LWG-kc-I9J" secondAttribute="bottom" constant="20" id="VUK-FT-WIo"/>
+                                            <constraint firstItem="1b6-eg-nfb" firstAttribute="top" secondItem="LWG-kc-I9J" secondAttribute="bottom" constant="25" id="Um1-0k-CsH"/>
                                             <constraint firstItem="1b6-eg-nfb" firstAttribute="leading" secondItem="Lnf-rj-uNL" secondAttribute="leading" constant="15" id="Wc5-PI-yvx"/>
                                             <constraint firstItem="k8b-9k-BFa" firstAttribute="leading" secondItem="Lnf-rj-uNL" secondAttribute="leading" id="h55-eU-o5g"/>
                                             <constraint firstItem="LWG-kc-I9J" firstAttribute="leading" secondItem="Lnf-rj-uNL" secondAttribute="leading" id="m3s-ss-njk"/>
-                                            <constraint firstItem="J3h-69-9OT" firstAttribute="leading" secondItem="Lnf-rj-uNL" secondAttribute="leading" id="o7H-aa-GDO"/>
                                             <constraint firstItem="LWG-kc-I9J" firstAttribute="top" secondItem="k8b-9k-BFa" secondAttribute="bottom" id="pUV-M9-Xvf"/>
                                             <constraint firstAttribute="trailing" secondItem="k8b-9k-BFa" secondAttribute="trailing" id="qhs-IH-1s3"/>
                                             <constraint firstItem="LWG-kc-I9J" firstAttribute="centerX" secondItem="Lnf-rj-uNL" secondAttribute="centerX" id="tTd-zz-D3j"/>
@@ -148,7 +139,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="AMz-qZ-eaQ"/>
                     <connections>
-                        <outlet property="acknowledgementsLabel" destination="1b6-eg-nfb" id="Buq-iL-kZp"/>
+                        <outlet property="acknowledgementsLabel" destination="1b6-eg-nfb" id="VqV-YM-6hi"/>
                         <outlet property="headerLabel" destination="p98-ws-e6m" id="YWD-3F-mgc"/>
                         <outlet property="headerView" destination="Qzc-Ol-jQZ" id="pTs-tT-InB"/>
                         <outlet property="updateSalariesButton" destination="tJ4-Tp-RyT" id="TQU-HA-as3"/>
@@ -231,7 +222,7 @@
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SW1-go-L0n">
                                                                     <rect key="frame" x="0.0" y="0.0" width="92.5" height="40.5"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generating Heatmap" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-P8-igJ">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Heatmap" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-P8-igJ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="92.5" height="40"/>
                                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="12"/>

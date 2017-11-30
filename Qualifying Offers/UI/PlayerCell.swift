@@ -48,6 +48,15 @@ class PlayerCell: UICollectionViewCell {
         self.playerNameView.text = offer.player.firstName + " " + offer.player.lastName
         self.playerSalaryView.text = offer.salary.formatted
         self.layer.borderColor = UIColor.lightGray.cgColor
+        self.playerHeatmapImageView.clipsToBounds = true
+        self.playerHeatmapImageView.layer.cornerRadius = 4.0
+        self.playerHeatmapLoadingView.clipsToBounds = true
+        self.playerHeatmapLoadingView.layer.cornerRadius = 4.0
+        
+        
+        
+        
+        
         
     }
     

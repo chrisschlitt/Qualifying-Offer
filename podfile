@@ -3,4 +3,6 @@ use_frameworks!
 target 'Qualifying Offers' do
   pod "SwiftSoup"
   pod 'NVActivityIndicatorView'
+  pod 'Down'
+  pod 'PopupDialog'
 end

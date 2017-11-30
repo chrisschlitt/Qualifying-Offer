@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		492049AF1FCF7D2800B9E369 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */; };
-		4926EA131FCF4C65007A836E /* CSVLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA121FCF4C65007A836E /* CSVLoader.swift */; };
-		4926EA151FCF4CEF007A836E /* HeatmapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */; };
-		4926EA171FCF4FB1007A836E /* FrancoStrikes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */; };
-		4926EA191FCF4FB7007A836E /* FrancoHits.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4926EA181FCF4FB7007A836E /* FrancoHits.csv */; };
 		493039021FCE54C6006996C3 /* DataCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039011FCE54C6006996C3 /* DataCollections.swift */; };
 		493039041FCE569D006996C3 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039031FCE569D006996C3 /* TabViewController.swift */; };
 		493039061FCE5795006996C3 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493039051FCE5795006996C3 /* LoadViewController.swift */; };
@@ -34,10 +30,6 @@
 /* Begin PBXFileReference section */
 		33BCC39B7B998336DD543FB1 /* Pods-Qualifying Offers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualifying Offers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers.debug.xcconfig"; sourceTree = "<group>"; };
 		492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		4926EA121FCF4C65007A836E /* CSVLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVLoader.swift; sourceTree = "<group>"; };
-		4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapGenerator.swift; sourceTree = "<group>"; };
-		4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FrancoStrikes.csv; sourceTree = "<group>"; };
-		4926EA181FCF4FB7007A836E /* FrancoHits.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FrancoHits.csv; sourceTree = "<group>"; };
 		493039011FCE54C6006996C3 /* DataCollections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollections.swift; sourceTree = "<group>"; };
 		493039031FCE569D006996C3 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		493039051FCE5795006996C3 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +111,6 @@
 				49ABD7491FCE4638008E1F8E /* DataFetcher.swift */,
 				49ABD74B1FCE4764008E1F8E /* DataParser.swift */,
 				493039011FCE54C6006996C3 /* DataCollections.swift */,
-				4926EA121FCF4C65007A836E /* CSVLoader.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -127,14 +118,11 @@
 		49DE9FA31FCF2B04008759DF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4926EA181FCF4FB7007A836E /* FrancoHits.csv */,
-				4926EA161FCF4FB1007A836E /* FrancoStrikes.csv */,
 				4943E8751FCE458D00BAFA87 /* RankViewController.swift */,
 				493039031FCE569D006996C3 /* TabViewController.swift */,
 				493039051FCE5795006996C3 /* LoadViewController.swift */,
 				49DE9F9E1FCE6171008759DF /* PlayerCell.swift */,
 				49DE9FAC1FCF2C8F008759DF /* UIExtensions.swift */,
-				4926EA141FCF4CEF007A836E /* HeatmapGenerator.swift */,
 				492049AE1FCF7D2800B9E369 /* SettingsViewController.swift */,
 			);
 			path = UI;
@@ -247,13 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4943E8811FCE458D00BAFA87 /* LaunchScreen.storyboard in Resources */,
-				4926EA191FCF4FB7007A836E /* FrancoHits.csv in Resources */,
 				49DE9FAA1FCF2B65008759DF /* Lato-Bold.ttf in Resources */,
 				49DE9FA11FCE8693008759DF /* placeholder.png in Resources */,
 				4943E87E1FCE458D00BAFA87 /* Assets.xcassets in Resources */,
 				49DE9FAB1FCF2B65008759DF /* Lato-Black.ttf in Resources */,
 				4943E8791FCE458D00BAFA87 /* Main.storyboard in Resources */,
-				4926EA171FCF4FB1007A836E /* FrancoStrikes.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,12 +286,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Qualifying Offers/Pods-Qualifying Offers-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,8 +314,6 @@
 				493039021FCE54C6006996C3 /* DataCollections.swift in Sources */,
 				493039061FCE5795006996C3 /* LoadViewController.swift in Sources */,
 				49DE9F9F1FCE6171008759DF /* PlayerCell.swift in Sources */,
-				4926EA151FCF4CEF007A836E /* HeatmapGenerator.swift in Sources */,
-				4926EA131FCF4C65007A836E /* CSVLoader.swift in Sources */,
 				49ABD74C1FCE4764008E1F8E /* DataParser.swift in Sources */,
 				4943E8761FCE458D00BAFA87 /* RankViewController.swift in Sources */,
 				4943E8741FCE458D00BAFA87 /* AppDelegate.swift in Sources */,

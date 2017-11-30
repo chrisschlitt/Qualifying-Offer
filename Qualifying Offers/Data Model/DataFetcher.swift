@@ -13,8 +13,7 @@ class DataFetcher {
     
     // Fetch remote data
     static func fetch(_ endpoint: String, _ completion: @escaping (Bool, String) -> Void){
-        print("Fetching: " + endpoint)
-        let baseURL = URL(string: endpoint)!
+        let baseURL = URL(string: endpoint.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)!
         
         // Create the URL Session object and connection to the server
         let task = URLSession.shared.dataTask(with: baseURL) { (data, response, error) in
@@ -42,7 +41,12 @@ class DataFetcher {
     static func fetchImage(_ player: Player, _ completion: @escaping (Bool, UIImage?) -> Void){
         
         let endpoint = "http://gdx.mlb.com/images/gameday/mugshots/mlb/\(player.mlbCode)@4x.jpg"
-        let baseURL = URL(string: endpoint)!
+        self.fetchImage(endpoint, completion)
+        
+    }
+    
+    static func fetchImage(_ endpoint: String, _ completion: @escaping (Bool, UIImage?) -> Void){
+        let baseURL = URL(string: endpoint.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!)!
         
         // Create the URL Session object and connection to the server
         let task = URLSession.shared.dataTask(with: baseURL) { (data, response, error) in
@@ -61,6 +65,5 @@ class DataFetcher {
         }
         // Run the request
         task.resume()
-        
     }
 }
