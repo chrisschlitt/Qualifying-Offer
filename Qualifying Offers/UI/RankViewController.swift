@@ -62,14 +62,14 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // UI Changes
         cell.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         cell.playerImageView.image = UIImage(named: "placeholder.png")
-        
         cell.setSalary(salaries[indexPath.row])
         cell.expanded = cell.salary.player.inFocus
-        
+        cell.playerHeatmapLoadingView.isHidden = false
         cell.playerStatsLabelA.text = ""
         cell.playerStatsLabelB.text = ""
         cell.playerHeatmapImageView.image = nil
-
+        
+        // Load the player image
         if(salaries[indexPath.row].player.image == nil){
             DataFetcher.fetchImage(salaries[indexPath.row].player) { (success, image) in
                 if(success){
@@ -85,12 +85,15 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.playerImageView.image = salaries[indexPath.row].player.image
         }
         
+        // Load player stats
         if(cell.salary.player.inFocus && cell.salary.player.stats != nil){
             cell.playerStatsLabelA.text = "\(cell.salary.player.stats!.firstHalf)"
             cell.playerStatsLabelB.text = "\(cell.salary.player.stats!.secondHalf)"
         }
         
+        // Load player heatmap
         if(cell.salary.player.inFocus && cell.salary.player.heatmap != nil){
+            cell.playerHeatmapLoadingView.isHidden = true
             cell.playerHeatmapImageView.image = cell.salary.player.heatmap
         }
         
@@ -100,13 +103,9 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        
         var height: CGFloat = 75.0
         if let cell = collectionView.cellForItem(at: indexPath) as? PlayerCell {
-            if(cell.salary.player.lastName == "Hamels"){
-                print("Sizing " + cell.salary.player.lastName + " which is \(cell.salary.player.inFocus)")
-            }
-            
+            // Check if cell is expanded
             if(cell.salary.player.inFocus){
                 height = 250.0
             }
@@ -116,7 +115,7 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        // Extract player
         let cell = collectionView.cellForItem(at: indexPath) as! PlayerCell
         let player = cell.salary.player
         player.inFocus = player.inFocus == false
@@ -132,6 +131,8 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 DispatchQueue.main.async {
                     if let currentCell = (collectionView.cellForItem(at: indexPath) as? PlayerCell) {
                         if currentCell.salary.player == player {
+                            // Update UI
+                            currentCell.playerHeatmapLoadingView.isHidden = true
                             currentCell.playerHeatmapImageView.image = heatmap
                         }
                     }
@@ -148,11 +149,11 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let stats = DataParser.parsePlayerStats(rawData)
                     player.stats = stats
                     player.type = .pitcher
-                    print("Stats Downloaded")
                     
                     DispatchQueue.main.async {
                         let currentCell = (collectionView.cellForItem(at: indexPath) as! PlayerCell)
                         if currentCell.salary.player == player {
+                            // Update UI
                             currentCell.playerStatsLabelA.text = "\(stats.firstHalf)"
                             currentCell.playerStatsLabelB.text = "\(stats.secondHalf)"
                         }
@@ -166,11 +167,11 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             let stats = DataParser.parsePlayerStats(rawData)
                             player.stats = stats
                             player.type = .batter
-                            print("Stats Downloaded")
                             
                             DispatchQueue.main.async {
                                 let currentCell = (collectionView.cellForItem(at: indexPath) as! PlayerCell)
                                 if currentCell.salary.player == player {
+                                    // Update UI
                                     currentCell.playerStatsLabelA.text = "\(stats.firstHalf)"
                                     currentCell.playerStatsLabelB.text = "\(stats.secondHalf)"
                                 }
@@ -181,20 +182,22 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
             })
         } else if(cell.expanded && cell.salary.player.stats != nil){
+            // Stats have already been downloaded
             cell.playerStatsLabelA.text = "\(cell.salary.player.stats!.firstHalf)"
             cell.playerStatsLabelB.text = "\(cell.salary.player.stats!.secondHalf)"
             if(cell.salary.player.heatmap != nil){
+                cell.playerHeatmapLoadingView.isHidden = true
                 cell.playerHeatmapImageView.image = cell.salary.player.heatmap
+            } else {
+                cell.playerHeatmapLoadingView.isHidden = false
             }
         }
         
+        // Refresh cell
         cell.isSelected = false
         collectionView.reloadItems(at: [indexPath])
         
     }
     
-    
-
-
 }
 

@@ -19,12 +19,12 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // UI Changes
         self.headerView.layer.borderColor = UIColor.lightGray.cgColor
         self.headerView.layer.borderWidth = 1.5
-        
         self.updateSalariesButton.clipsToBounds = true
         self.updateSalariesButton.layer.cornerRadius = 3.0
-        
         self.acknowledgementsLabel.text = generateAcknowledgements()
     }
     
@@ -42,13 +42,17 @@ class SettingsViewController: UIViewController {
         self.performSegue(withIdentifier: "Go to Load", sender: self)
     }
     
+    // Generate the acknowldgements string
     private func generateAcknowledgements() -> String {
         var acknowledgements = ""
+        
+        acknowledgements += " "
         
         
         return acknowledgements
     }
     
+    // Handle Reload completion
     @IBAction func unwindFromLoadViewController( _ sender: UIStoryboardSegue) {
         for viewController in (self.tabBarController as! TabViewController).viewControllers! {
             print(viewController)
@@ -57,6 +61,8 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    
+    
 
     
     // MARK: - Navigation

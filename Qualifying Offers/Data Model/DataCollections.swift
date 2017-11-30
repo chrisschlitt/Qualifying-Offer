@@ -127,8 +127,6 @@ class Stats: CustomStringConvertible {
         }
     }
     
-    
-    
     private func getStatString(start: Int, end: Int) -> String {
         var statString = ""
         

@@ -24,6 +24,18 @@ class TabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Go to first tab
+        self.selectedIndex = 0
+        // Scroll to top of collection view
+        for viewController in (self.viewControllers)! {
+            if let rankViewController = viewController as? RankViewController {
+                rankViewController.playerCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+            }
+        }
+        super.viewDidAppear(animated)
+    }
+    
 
     /*
     // MARK: - Navigation

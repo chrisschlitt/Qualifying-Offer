@@ -25,6 +25,7 @@ class PlayerCell: UICollectionViewCell {
         }
     }
     
+    // UI Flags
     var expanded = false
     var loading = false
     
@@ -36,6 +37,7 @@ class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerStatsLabelB: UILabel!
     @IBOutlet weak var playerHeatmapContainerView: UIView!
     @IBOutlet weak var playerHeatmapImageView: UIImageView!
+    @IBOutlet weak var playerHeatmapLoadingView: UILabel!
     
     /* Data Elements */
     var salary: PlayerSalary!

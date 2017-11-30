@@ -28,24 +28,28 @@ class LoadViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // UI Changes
         let loadingView = NVActivityIndicatorView(frame: self.loadingViewContainer.bounds, type: .lineScale, color: UIColor.fromHex("2662B5"), padding: 30.0)
         self.loadingViewContainer.addSubview(loadingView)
         loadingView.startAnimating()
-        
         self.loadingLabel.font = UIFont(name: "Lato-Bold", size: 18.0)
-        
         self.loadingLabel.text = "Downloading Player Index"
         
+        // Download the player dictionary
         self.downloadPlayerDictionary { (success, playerDictionary) in
             if(success){
                 self.playerDictionary = playerDictionary
-                
                 DispatchQueue.main.async {
                     self.loadingLabel.text = "Downloading Salaries"
                 }
+                
+                // Download the salaries
                 self.download { (success, salaries) in
                     if(success) {
                         self.salaries = salaries
+                        
+                        // Go to the tab view controller
                         DispatchQueue.main.async {
                             if(self.isInitialLoad){
                                 self.performSegue(withIdentifier: "Go to Stats", sender: self)
@@ -76,6 +80,8 @@ class LoadViewController: UIViewController {
         let url = "https://questionnaire-148920.appspot.com/swe/"
         DataFetcher.fetch(url) { (success, data) in
             if(success){
+                
+                // Calculate qualifying offer
                 let salaries = DataParser.parseSalaries(data, players: self.playerDictionary)
                 let topSalaries = Array(salaries.sorted(by: >)[0..<125])
                 

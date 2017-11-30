@@ -36,7 +36,7 @@ class DataParser {
                 }
             }
             
-        } catch Exception.Error(let type, let message) {
+        } catch Exception.Error(let _, let message) {
             print(message)
         } catch {
             print("Unknown Error")
@@ -108,7 +108,7 @@ class DataParser {
                 stats.addStat(stat: "SV", value: try! statsTag.attr("s_sv"))
             }
             
-        } catch Exception.Error(let type, let message) {
+        } catch Exception.Error(let _, let message) {
             print(message)
         } catch {
             print("Unknown Error")

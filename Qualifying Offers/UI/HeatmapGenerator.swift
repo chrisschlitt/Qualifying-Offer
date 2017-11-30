@@ -73,8 +73,6 @@ class HeatmapGenerator {
             battersBoxView.axis = .vertical
             battersBoxView.backgroundColor = UIColor.groupTableViewBackground
         }
-        // let battersBoxView = UIStackView(frame: CGRect(x: 25, y: 50, width: 100, height: 100))
-        
         
         // Iterate over the data and create the batters box view
         for i in 0..<numberOfBoxes {
@@ -138,13 +136,6 @@ class HeatmapGenerator {
                 battersBoxViews.append(battersBoxViewsRow)
             }
         }
-        
-        // Display the batters box view
-        // PlaygroundPage.current.liveView = battersBoxView
-        
-        // Raw colored batter's box view
-        // battersBoxView
-        
         
         // Iterate over each box and add gradients between diagional neighboring boxes
         for i in 0..<battersBoxViews.count {
@@ -235,10 +226,6 @@ class HeatmapGenerator {
                 }
             }
         }
-        
-        // Colored batter's box with corner gradients
-        // battersBoxView
-        
         
         // Iterate over each box and add gradients between neighboring boxes
         for i in 0..<battersBoxViews.count {

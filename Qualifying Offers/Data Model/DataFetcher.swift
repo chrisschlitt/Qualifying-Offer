@@ -42,7 +42,6 @@ class DataFetcher {
     static func fetchImage(_ player: Player, _ completion: @escaping (Bool, UIImage?) -> Void){
         
         let endpoint = "http://gdx.mlb.com/images/gameday/mugshots/mlb/\(player.mlbCode)@4x.jpg"
-        
         let baseURL = URL(string: endpoint)!
         
         // Create the URL Session object and connection to the server
