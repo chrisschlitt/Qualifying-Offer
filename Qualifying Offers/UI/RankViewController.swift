@@ -69,18 +69,20 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.playerStatsLabelA.text = ""
         cell.playerStatsLabelB.text = ""
         cell.playerHeatmapImageView.image = nil
+        cell.playerHeatmapLoadingView.isHidden = false
+        cell.playerHeatmapLoadingView.text = "Loading Heatmap..."
         
         // Add the heatmap gesture recognizer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RankViewController.heatmapTapped(_:)))
         cell.playerHeatmapImageView.isUserInteractionEnabled = true
         cell.playerHeatmapImageView.tag = indexPath.row
-        if cell.playerHeatmapImageView.gestureRecognizers == nil || cell.playerHeatmapImageView.gestureRecognizers?.count == 0 {
+        if salaries[indexPath.row].player.found && (cell.playerHeatmapImageView.gestureRecognizers == nil || cell.playerHeatmapImageView.gestureRecognizers?.count == 0) {
             cell.playerHeatmapImageView.addGestureRecognizer(tapGestureRecognizer)
         }
         
         
         // Load the player image
-        if(salaries[indexPath.row].player.image == nil){
+        if(salaries[indexPath.row].player.found && salaries[indexPath.row].player.image == nil){
             DataFetcher.fetchImage(salaries[indexPath.row].player) { (success, image) in
                 if(success){
                     DispatchQueue.main.async {
@@ -91,34 +93,40 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-        } else {
+        } else if salaries[indexPath.row].player.image != nil {
             cell.playerImageView.image = salaries[indexPath.row].player.image
         }
         
         // Load player stats
-        if(cell.salary.player.inFocus && cell.salary.player.stats != nil){
+        if(salaries[indexPath.row].player.found && cell.salary.player.inFocus && cell.salary.player.stats != nil){
             cell.playerStatsLabelA.text = "\(cell.salary.player.stats!.firstHalf)"
             cell.playerStatsLabelB.text = "\(cell.salary.player.stats!.secondHalf)"
+        } else if cell.salary.player.inFocus && !salaries[indexPath.row].player.found {
+            cell.playerStatsLabelA.text = "No Stats Found"
+            cell.playerStatsLabelB.text = ""
         }
         
         // Load player heatmap
-        if(cell.salary.player.inFocus && cell.salary.player.heatmap != nil){
+        if(salaries[indexPath.row].player.found && cell.salary.player.inFocus && cell.salary.player.heatmap != nil){
             cell.playerHeatmapLoadingView.isHidden = true
             cell.playerHeatmapImageView.image = cell.salary.player.heatmap
+        } else if salaries[indexPath.row].player.inFocus && !salaries[indexPath.row].player.found {
+            cell.playerHeatmapLoadingView.isHidden = false
+            cell.playerHeatmapLoadingView.text = "No Heatmap Found"
         }
+        
         
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        // Normal cell
         var height: CGFloat = 75.0
-        if let cell = collectionView.cellForItem(at: indexPath) as? PlayerCell {
-            // Check if cell is expanded
-            if(cell.salary.player.inFocus){
-                height = 250.0
-            }
+        
+        if(salaries[indexPath.row].player.inFocus){
+            // Expanded cell
+            height =  250.0
         }
         
         return CGSize(width: collectionView.frame.width - 30.0, height: height)
@@ -151,7 +159,7 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
         player.inFocus = player.inFocus == false
         cell.expanded = player.inFocus
         
-        if(cell.expanded && !player.statsRequested){
+        if(player.found && cell.expanded && !player.statsRequested){
             player.statsRequested = true
             
             // Get Stats
@@ -181,14 +189,37 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         if(success && rawData != "GameDay - 404 Not Found"){
                             // Player is a batter
                             let stats = DataParser.parsePlayerStats(rawData)
-                            player.stats = stats
+                            if(stats.getStat(stat: "AB") != "0"){
+                                player.stats = stats
+                                
+                                DispatchQueue.main.async {
+                                    let currentCell = (collectionView.cellForItem(at: indexPath) as! PlayerCell)
+                                    if currentCell.salary.player == player {
+                                        // Update UI
+                                        currentCell.playerStatsLabelA.text = "\(stats.firstHalf)"
+                                        currentCell.playerStatsLabelB.text = "\(stats.secondHalf)"
+                                    }
+                                }
+                            } else {
+                                player.found = false
+                                DispatchQueue.main.async {
+                                    let currentCell = (collectionView.cellForItem(at: indexPath) as! PlayerCell)
+                                    if currentCell.salary.player == player {
+                                        // Update UI
+                                        currentCell.playerStatsLabelA.text = "No Stats Found"
+                                        currentCell.playerStatsLabelB.text = ""
+                                    }
+                                }
+                            }
                             
+                        } else {
+                            player.found = false
                             DispatchQueue.main.async {
                                 let currentCell = (collectionView.cellForItem(at: indexPath) as! PlayerCell)
                                 if currentCell.salary.player == player {
                                     // Update UI
-                                    currentCell.playerStatsLabelA.text = "\(stats.firstHalf)"
-                                    currentCell.playerStatsLabelB.text = "\(stats.secondHalf)"
+                                    currentCell.playerStatsLabelA.text = "No Stats Found"
+                                    currentCell.playerStatsLabelB.text = ""
                                 }
                             }
                         }
@@ -215,12 +246,21 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
                                 }
                             }
                         }
-                        
+                    } else {
+                        DispatchQueue.main.async {
+                            if let currentCell = (collectionView.cellForItem(at: indexPath) as? PlayerCell) {
+                                if currentCell.salary.player == player {
+                                    // Update UI
+                                    currentCell.playerHeatmapLoadingView.isHidden = false
+                                    currentCell.playerHeatmapLoadingView.text = "No Heatmap Found"
+                                }
+                            }
+                        }
                     }
                 })
                 
             })
-        } else if(cell.expanded && cell.salary.player.stats != nil){
+        } else if(cell.salary.player.found && cell.expanded && cell.salary.player.stats != nil){
             // Stats have already been downloaded
             cell.playerStatsLabelA.text = "\(cell.salary.player.stats!.firstHalf)"
             cell.playerStatsLabelB.text = "\(cell.salary.player.stats!.secondHalf)"
@@ -230,6 +270,11 @@ class RankViewController: UIViewController, UICollectionViewDelegate, UICollecti
             } else {
                 cell.playerHeatmapLoadingView.isHidden = false
             }
+        } else if(cell.expanded && !cell.salary.player.found) {
+            cell.playerStatsLabelA.text = "No Stats Found"
+            cell.playerStatsLabelB.text = ""
+            cell.playerHeatmapLoadingView.isHidden = true
+            cell.playerHeatmapLoadingView.text = "No Heatmap Found"
         }
         
         // Refresh cell

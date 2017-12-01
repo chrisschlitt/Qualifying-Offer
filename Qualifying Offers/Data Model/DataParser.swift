@@ -33,6 +33,10 @@ class DataParser {
                 if let player = players[firstName + " " + lastName] {
                     let salary = PlayerSalary(player: player, salary: playerSalaryRaw)
                     salaries.append(salary)
+                } else {
+                    let player = Player.notFound(firstName: firstName, lastName: lastName)
+                    let salary = PlayerSalary(player: player, salary: playerSalaryRaw)
+                    salaries.append(salary)
                 }
             }
             

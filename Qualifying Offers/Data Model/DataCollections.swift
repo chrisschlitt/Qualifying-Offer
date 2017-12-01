@@ -61,6 +61,7 @@ class Player: Equatable {
     var type: PlayerType = .batter
     var statsRequested: Bool = false
     var heatmap: UIImage?
+    var found: Bool
     
     init(firstName: String, lastName: String, playerId: Int, davenportCode: String, mlbCode: Int, retrosheetCode: String){
         self.firstName = firstName
@@ -69,7 +70,15 @@ class Player: Equatable {
         self.davenportCode = davenportCode
         self.mlbCode = mlbCode
         self.retrosheetCode = retrosheetCode
+        self.found = true
     }
+    
+    static func notFound(firstName: String, lastName: String) -> Player {
+        let player = Player(firstName: firstName, lastName: lastName, playerId: -1, davenportCode: "-1", mlbCode: -1, retrosheetCode: "-1")
+        player.found = false
+        return player
+    }
+    
     
     static func ==(lhs: Player, rhs: Player) -> Bool {
         return lhs.firstName + " " + lhs.lastName == rhs.firstName + " " + rhs.lastName
